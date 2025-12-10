@@ -1,34 +1,62 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import WebsiteWidget from './components/WebsiteWidget'
+
+interface Widget {
+  name: string
+  description: string
+  imageUrl: string
+  link: string
+}
 
 function App() {
-  const [count, setCount] = useState(0)
+  const widgets: Widget[] = [
+    {
+      name: "Ten Hats Riddle",
+      description: "Challenge your logic skills",
+      imageUrl: "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg?auto=compress&cs=tinysrgb&w=800",
+      link: "https://ten-hats-riddle.netlify.app/"
+    },
+    {
+      name: "Creative Studio",
+      description: "Explore amazing designs",
+      imageUrl: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800",
+      link: "https://ten-hats-riddle.netlify.app/"
+    },
+    {
+      name: "Tech Solutions",
+      description: "Innovative technology hub",
+      imageUrl: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800",
+      link: "https://ten-hats-riddle.netlify.app/"
+    },
+    {
+      name: "Digital Portfolio",
+      description: "Showcase of modern work",
+      imageUrl: "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=800",
+      link: "https://ten-hats-riddle.netlify.app/"
+    }
+  ]
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="app-container">
+      <header className="header">
+        <h1 className="title">My Web Portal</h1>
+        <p className="subtitle">Explore my collection of web projects</p>
+      </header>
+
+      <main className="main-content">
+        <div className="widgets-grid">
+          {widgets.map((widget, index) => (
+            <WebsiteWidget
+              key={index}
+              name={widget.name}
+              description={widget.description}
+              imageUrl={widget.imageUrl}
+              link={widget.link}
+            />
+          ))}
+        </div>
+      </main>
+    </div>
   )
 }
 
